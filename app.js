@@ -1,16 +1,13 @@
 const express = require('express')
 const newsCollection = require('./database.js');
 const reuter = require('./reuters.js');
+const manorama = require('./manorama.js');
 const opn = require('better-opn');
 const moment = require('moment');
 const app = express()
 const port = 3000
 
 app.set('view engine', 'ejs');
-
-setInterval(() => {
-    reuter
-}, 1500000);
 
 app.listen(port, () => console.log(`server is up and listening at http://localhost:${port}`))
 

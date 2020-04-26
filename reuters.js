@@ -3,9 +3,9 @@ var moment = require('moment');
 const cheerio = require('cheerio');
 const story = require('./reutersLink.js');
 
-console.log('updated at ' + moment(new Date()).format('hh:mm A'));
-
-const reuters = axios.get('https://in.reuters.com/news/top-news')
+const reuters = function() {
+  console.log('updated at ' + moment(new Date()).format('hh:mm A'));
+  axios.get('https://in.reuters.com/news/top-news')
   .then(function (response) {
       console.log('reuters ' +response.status);
     if (response.status == 200) {
@@ -37,5 +37,10 @@ const reuters = axios.get('https://in.reuters.com/news/top-news')
       }
       console.log(error.config);
   });
+}
+
+  setInterval(() => {
+    reuters();
+  }, 300000);
 
   module.exports = reuters;
