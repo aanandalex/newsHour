@@ -5,6 +5,7 @@ const reuter = require('./reuters.js');
 const manorama = require('./manorama.js');
 const opn = require('better-opn');
 const moment = require('moment');
+const speech = require('./textToSpeech.js');
 const app = express()
 const port = 3000
 

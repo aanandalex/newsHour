@@ -75,7 +75,11 @@
               <img src="<%= news[i].imageUrl %>" class="card-img-top" alt="...">
               <div class="card-body">
                 <h1 style="text-align: center;"><%= news[i].heading %></h1>
-                <p class="card-text" style="text-align: justify;"><%= news[i].article %></p>
+                <% for(var k=0; k < (news[i].article).length; k++) { %>
+                  <br>
+                  <p class="card-text" style="text-align: justify;"><%= news[i].article[k] %></p>
+                  <br>
+              <% } %>
               </div>
             </div>
         <% } %>
