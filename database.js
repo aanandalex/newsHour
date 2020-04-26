@@ -32,6 +32,27 @@ const newsSchema = mongoose.Schema({
     }
 })
 
-var newsCollection = mongoose.model("reuters", newsSchema);
+const manoramaSchema = mongoose.Schema({
+    date: {
+        type: String,
+    },
+    link: {
+        type: String,
+        required: true,
+        unique: true
+    },
+    heading: {
+        type: String
+    },
+    article: [{
+        type: String
+    }],
+    imageUrl: [{
+        type: String
+    }]
+})
 
-module.exports = newsCollection;
+var newsCollection = mongoose.model("reuters", newsSchema);
+var manoramaCollection = mongoose.model("manorama", manoramaSchema);
+
+module.exports = newsCollection, manoramaCollection;

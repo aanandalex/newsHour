@@ -1,7 +1,7 @@
 const axios = require('axios');
 const moment = require('moment');
 const cheerio = require('cheerio');
-const checkInDataBase = require('./checkInDb.js');
+const checkInManoramaDB = require('./checkInManoramaDB');
 
 const manoramaStory = function(link) {
     axios.get(link)
@@ -13,7 +13,7 @@ const manoramaStory = function(link) {
                 article[i] = $(el).text();
             });
             images = [];
-            $('img').each((j,li) => {
+            $('div.story-figure-image img').each((j,li) => {
                 if ($(li).attr('src') != "https://img-mm.manoramaonline.com/etc/designs/mmonline/clientlibs/img/mmo-default-img.gif") {
                     images.push($(li).attr('src'));
                 }
@@ -25,7 +25,7 @@ const manoramaStory = function(link) {
                 "article": article,
                 "imageUrl": images
             };
-            checkInDataBase(newsBody);
+            checkInManoramaDB(newsBody);
         }
     })
     .catch((error) => {

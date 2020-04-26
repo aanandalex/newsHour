@@ -46,6 +46,6 @@ setInterval(() => {
             manoramaStory(storyLinks[i]);
         }
     }, 2000);
-}, 60000);
+}, 120000);
 
 module.exports = manorama;
