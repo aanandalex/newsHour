@@ -3,8 +3,8 @@ const moment = require('moment');
 const cheerio = require('cheerio');
 const checkInDataBase = require('./checkInDb.js');
 
-const reuterStory = function(link) {
-    axios.get('https://in.reuters.com' + link)
+const reuterStory = async function(link) {
+    await axios.get('https://in.reuters.com' + link)
     .then((response) => {
         if (response.status == 200) {
             const $ = cheerio.load(response.data);

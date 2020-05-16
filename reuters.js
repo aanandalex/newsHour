@@ -3,9 +3,9 @@ var moment = require('moment');
 const cheerio = require('cheerio');
 const story = require('./reutersLink.js');
 
-const reuters = function() {
+const reuters = async function() {
   console.log('updated at ' + moment(new Date()).format('hh:mm A'));
-  axios.get('https://in.reuters.com/news/top-news')
+  await axios.get('https://in.reuters.com/news/top-news')
   .then(function (response) {
       console.log('reuters ' +response.status);
     if (response.status == 200) {

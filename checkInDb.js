@@ -1,8 +1,8 @@
 const newsCollection = require('./database.js');
 const save = require('./saveToDB.js');
 
-const check = function(newsBody) {
-    newsCollection.find({link: newsBody.link})
+const check = async function(newsBody) {
+    await newsCollection.find({link: newsBody.link})
     .then((resp) => {
         if (resp.length == 1) {
             console.log('link already exsists');

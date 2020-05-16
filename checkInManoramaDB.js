@@ -1,8 +1,8 @@
 const manoramaCollection = require('./databaseConnectionForManorama.js');
 const save = require('./saveToManoramaDB.js');
 
-const check = function(newsBody) {
-    manoramaCollection.find({link: newsBody.link})
+const check = async function(newsBody) {
+    await manoramaCollection.find({link: newsBody.link})
     .then((resp) => {
         if (resp.length == 1) {
             console.log('link already exsists');

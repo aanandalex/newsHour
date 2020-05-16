@@ -3,8 +3,8 @@ const moment = require('moment');
 const cheerio = require('cheerio');
 const checkInManoramaDB = require('./checkInManoramaDB');
 
-const manoramaStory = function(link) {
-    axios.get(link)
+const manoramaStory = async function(link) {
+    await axios.get(link)
     .then((response) => {
         if (response.status == 200) {
             const $ = cheerio.load(response.data);

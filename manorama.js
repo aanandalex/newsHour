@@ -5,9 +5,9 @@ const manoramaStory = require('./manoramaStory.js');
 
 var storyLinks = [];
 
-const manorama = function () {
+const manorama = async function () {
     console.log('updated at ' + moment(new Date()).format('hh:mm A'));
-    axios.get('https://www.manoramaonline.com/news/latest-news.html')
+    await axios.get('https://www.manoramaonline.com/news/latest-news.html')
     .then(function (response) {
         console.log('Manorama ' +response.status);
         if (response.status == 200) {
