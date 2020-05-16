@@ -39,6 +39,10 @@ app.use(function (req, res, next) {
     next();
 });
 
+app.get('/', (resq,res) => {
+    res.send('<h1>VAARTHAA</h1>');
+});
+
 app.get('/reuters', (req, res) => {
     newsCollection.find({date: moment(new Date()).format("DD/MM/YYYY")}).sort({ _id: -1 })
     .then((resp) => {
