@@ -40,7 +40,15 @@ app.use(function (req, res, next) {
 });
 
 app.get('/', (resq,res) => {
-    res.send('<h1>VAARTHAA</h1>');
+    manoramaCollection.find({date: moment(new Date()).format("DD/MM/YYYY")}).sort({_id: -1})
+    .then((resp) => {
+        console.log(resp.length);
+        res.render('index', {news: resp});
+    })
+    .catch((error) => {
+        console.log(error);
+    });
+
 });
 
 app.get('/reuters', (req, res) => {
