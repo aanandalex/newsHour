@@ -66,7 +66,7 @@ app.get('/manorama', (req,res) => {
     manoramaCollection.find({date: moment(new Date()).format("DD/MM/YYYY")}).sort({_id: -1})
     .then((resp) => {
         console.log(resp.length);
-        res.render('manorama', {title: 'Manorama', news: resp});
+       res.render('news', {title: 'Manorama', news: resp}); 
     })
     .catch((error) => {
         console.log(error);
