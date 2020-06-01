@@ -18,11 +18,12 @@ const reuters = async function() {
         storyLinks = Array.from(new Set(links));
         topStoriesLink = storyLinks;
     } else {
-        console.log(response.data);
-        console.log(response.status);
-        console.log(response.statusText);
-        console.log(response.headers);
-        console.log(response.config);
+        // console.log(response.data);
+        // console.log(response.status);
+        // console.log(response.statusText);
+        // console.log(response.headers);
+        // console.log(response.config);
+        console.log('error to fill the links in array!');
     }
   })
   .catch(function (error) {
@@ -31,9 +32,9 @@ const reuters = async function() {
         console.log(error.response.status);
         console.log(error.response.headers);
       } else if (error.request) {
-        console.log(error.request);
+        console.log("Error in getting request!");
       } else {
-        console.log('Error', error.message);
+        console.log('Error to get reuters site!');
       }
       console.log(error.config);
   });
@@ -41,6 +42,6 @@ const reuters = async function() {
 
   setInterval(() => {
     reuters();
-  }, 300000);
+  }, 120000);
 
   module.exports = reuters;

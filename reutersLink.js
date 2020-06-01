@@ -30,15 +30,19 @@ const reuterStory = async function(link) {
     })
     .catch((error) => {
         if (error.response) {
-            console.log(error.response.data);
-            console.log(error.response.status);
-            console.log(error.response.headers);
+            // console.log(error.response.data);
+            // console.log(error.response.status);
+            // console.log(error.response.headers);
+            console.log('error to get data from the news link reuters')
           } else if (error.request) {
-            console.log(error.request);
+            //console.log(error.request);
+            console.log('error to get requet');
           } else {
-            console.log('Error', error.message);
+            //console.log('Error', error.message);
+            console.log('error, error message');
           }
-          console.log(error.config);
+          //console.log(error.config);
+          console.log('error config');
       });
 }
 

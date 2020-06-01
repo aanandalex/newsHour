@@ -30,15 +30,19 @@ const manoramaStory = async function(link) {
     })
     .catch((error) => {
         if (error.response) {
-            console.log(error.response.data);
-            console.log(error.response.status);
-            console.log(error.response.headers);
+            // console.log(error.response.data);
+            // console.log(error.response.status);
+            // console.log(error.response.headers);
+            console.log('error to get news from manorama story link');
           } else if (error.request) {
-            console.log(error.request);
+            //console.log(error.request);
+            console.log('error to get request from manorama story');
           } else {
-            console.log('Error', error.message);
+            // console.log('Error', error.message);
+            console.log('error to get manorama story');
           }
-          console.log(error.config);
+          //console.log(error.config);
+          console.log('error to get config manorama');
       });
 }
 module.exports = manoramaStory;

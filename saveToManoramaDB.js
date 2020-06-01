@@ -11,9 +11,9 @@ const save = async function(newsObject) {
     });
 
     await news.save().then(() => {
-        console.log('saved successfully ' + newsObject.heading);
+        console.log('saved successfully manorama');
     }).catch((error) => {
-        console.log('error in saving', error);
+        console.log('error in saving');
     });
 }
 

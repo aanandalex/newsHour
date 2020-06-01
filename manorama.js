@@ -18,22 +18,26 @@ const manorama = async function () {
             });
             storyLinks = Array.from(new Set(links));
         } else {
-            console.log(response.data);
-            console.log(response.status);
-            console.log(response.statusText);
-            console.log(response.headers);
-            console.log(response.config);
+            // console.log(response.data);
+            // console.log(response.status);
+            // console.log(response.statusText);
+            // console.log(response.headers);
+            // console.log(response.config);
+            console.log('error to fill array manorama');
         }
     })
     .catch(function (error) {
         if (error.response) {
-            console.log(error.response.data);
-            console.log(error.response.status);
-            console.log(error.response.headers);
+            // console.log(error.response.data);
+            // console.log(error.response.status);
+            // console.log(error.response.headers);
+            console.log('error to get response from manorama website')
         } else if (error.request) {
-            console.log(error.request);
+            //console.log(error.request);
+            console.log('error to get request from manorama');
         } else {
-            console.log('Error', error.message);
+            //console.log('Error', error.message);
+            console.log('error to get manorama website');
         }
         console.log(error.config);
     });
@@ -46,6 +50,6 @@ setInterval(() => {
             manoramaStory(storyLinks[i]);
         }
     }, 2000);
-}, 120000);
+}, 60000);
 
 module.exports = manorama;

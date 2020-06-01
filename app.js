@@ -42,11 +42,11 @@ app.use(function (req, res, next) {
 app.get('/', (resq,res) => {
     manoramaCollection.find({date: moment(new Date()).format("DD/MM/YYYY")}).sort({_id: -1})
     .then((resp) => {
-        console.log(resp.length);
+        console.log('manorama',resp.length);
         res.render('index', {news: resp});
     })
     .catch((error) => {
-        console.log(error);
+        console.log('error to get the home page');
     });
 
 });
@@ -54,22 +54,22 @@ app.get('/', (resq,res) => {
 app.get('/reuters', (req, res) => {
     newsCollection.find({date: moment(new Date()).format("DD/MM/YYYY")}).sort({ _id: -1 })
     .then((resp) => {
-        console.log(resp.length);
+        console.log('reuters',resp.length);
         res.render('news', {title: 'Reuters', news: resp});
     })
     .catch((error) => {
-        console.log(error);
+        console.log('error to get the reuters page');
     });
 })
 
 app.get('/manorama', (req,res) => {
     manoramaCollection.find({date: moment(new Date()).format("DD/MM/YYYY")}).sort({_id: -1})
     .then((resp) => {
-        console.log(resp.length);
+        console.log('reuters',resp.length);
        res.render('news', {title: 'Manorama', news: resp}); 
     })
     .catch((error) => {
-        console.log(error);
+        console.log('error to get the manorama page');
     });
 })
 

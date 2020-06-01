@@ -17,6 +17,7 @@
     "express": "^4.17.1",
     "google-tts-api": "0.0.4",
     "moment": "^2.24.0",
-    "mongoose": "^5.9.10"
+    "mongoose": "^5.9.10",
+    "nodemon": "^2.0.4"
   }
 }
