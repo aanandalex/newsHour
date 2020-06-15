@@ -98,7 +98,30 @@ app.get('/news/manorama', (req,res) => {
 var articleReuters;
 var articleManorama;
 
-newsCollection.find({date: moment(new Date()).format("DD/MM/YYYY")}).sort({ _id: -1 })
+// newsCollection.find({date: moment(new Date()).format("DD/MM/YYYY")}).sort({ _id: -1 })
+//     .then((resp) => {
+//         console.log('reuters article',resp.length);
+//         if(resp) {
+//             articleReuters = resp;
+//         }
+//     })
+//     .catch((error) => {
+//         console.log('error to get the reuters page');
+//     });
+
+// manoramaCollection.find({date: moment(new Date()).format("DD/MM/YYYY")}).sort({_id: -1})
+//     .then((resp) => {
+//         console.log('manorama article',resp.length);
+//         if(resp) {
+//             articleManorama = resp;
+//         }
+//     })
+//     .catch((error) => {
+//         console.log('error to get the manorama page');
+//     });
+
+async function articleRun1() {
+    newsCollection.find({date: moment(new Date()).format("DD/MM/YYYY")}).sort({ _id: -1 })
     .then((resp) => {
         console.log('reuters article',resp.length);
         if(resp) {
@@ -108,8 +131,9 @@ newsCollection.find({date: moment(new Date()).format("DD/MM/YYYY")}).sort({ _id:
     .catch((error) => {
         console.log('error to get the reuters page');
     });
-
-manoramaCollection.find({date: moment(new Date()).format("DD/MM/YYYY")}).sort({_id: -1})
+}
+async function articleRun2() {
+    manoramaCollection.find({date: moment(new Date()).format("DD/MM/YYYY")}).sort({_id: -1})
     .then((resp) => {
         console.log('manorama article',resp.length);
         if(resp) {
@@ -119,8 +143,18 @@ manoramaCollection.find({date: moment(new Date()).format("DD/MM/YYYY")}).sort({_
     .catch((error) => {
         console.log('error to get the manorama page');
     });
+}
+
+
+async function articleRefresh() {
+    await articleRun1();
+    await articleRun2();
+}
+
+articleRefresh();
 
 app.get('/article', (req,res) => {
+    articleRefresh();
     res.render('articles', {reuter: articleReuters, manorama: articleManorama});
 });
 
