@@ -1,0 +1,326 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <title>Article</title>
+  </head>
+  <body onload="startTime()">
+    <div class="container-fluid">
+      <div class="row" id="navbar">
+        <div class="col-md-3">
+          <h1 id="menu">
+            <a id="menuStyle" href="#">Menu</a>
+          </h1>
+        </div>
+        <div class="col-md-6">
+          <h1 class="" id="date"></h1>
+          
+        </div>
+        <div class="col-md-3">
+          <h1 class="" id="clock"></h1>
+        </div>
+      </div>
+    </div>
+    <div class="container-fluid">
+      <div class="col-md-12">
+        <h1 class="" id="brainwash">Brainwash</h1>
+      </div>
+    </div>
+    <hr>
+    <div id="modal-container">
+      <div class="modal-background">
+        <div class="modal">
+          <div class="row">
+            <div class="col-md-12">
+              <h1>BRAINWASH</h1>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <p><a href="/reuters">Reuters</a></p>
+            </div>
+            <div class="col-md-6">
+              <p><a href="/manorama">Manorama</a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+<style>
+ body::-webkit-scrollbar {
+  display: none;
+}
+  body {
+    color: #1f1f1f;
+  }
+  #navbar {
+   width: 100%;
+   width: 100vw;
+   padding: 30px;
+   position: fixed;
+   top: 0;
+   right: 0;
+   z-index: 3;
+  }
+  #menu {
+    text-align: left;
+    font-weight: 600;
+    font-size: 30px;
+  }
+  #menuStyle {
+    color: #1f1f1f;
+    /* text-transform: uppercase; */
+    text-decoration: none;
+    /* letter-spacing: 0.15em; */
+    display: inline-block;
+    position: relative;
+  }
+  #date {
+    text-align: center;
+    font-weight: 600;
+    font-size: 30px;
+    /* text-transform: uppercase; */
+    letter-spacing: 0.15em;
+  }
+  #clock {
+    text-align: right;
+    font-weight: 600;
+    font-size: 30px;
+    /* text-transform: uppercase; */
+  }
+  #brainwash {
+    font-weight: 500;
+    text-align: center;
+    font-size: 275px;
+    text-transform: uppercase;
+    margin-top: 100px;
+    margin-left: 5px;
+    line-height: 90%;
+  }
+  #articles {
+            font-weight: 700;
+            text-align: center;
+            font-size: 16px;
+            text-transform: uppercase;
+            /* letter-spacing: 0.25em; */
+            margin-top: 150px;
+            /* padding-left: 60px; */
+            line-height: 80%;
+        }
+        hr {
+            border: none;
+            border-top: 2px solid #1f1f1f;
+            color: #1f1f1f;
+            overflow: visible;
+            text-align: center;
+            height: 0.5px;
+            margin-right: 30px;
+            width: 95vw;
+        }
+        #menuStyle:after {    
+            background: none repeat scroll 0 0 transparent;
+            bottom: 0;
+            content: "";
+            display: block;
+            height: 2px;
+            /* left: 50%; */
+            right: 0;
+            position: absolute;
+            background: #1f1f1f;
+            /* transition: width 0.3s ease 0s, left 0.3s ease 0s; */
+            transition: width 0.5s ease 0s, right 0.3s ease 0s;
+            width: 0;
+        }
+        #menuStyle:hover:after { 
+          width: 100%; 
+          left: 0;
+        }
+        #menuStyle:hover {
+          color: #1f1f1f;
+        }
+        body{
+        font-family: 'Montserrat', sans-serif;
+        background-color: #f7f7f5;
+        }
+        h1 {
+            font-weight: 700;
+            text-align: center;
+        }
+        .list-group-item {
+            border: none !important;
+            font-weight: 300;
+        }
+        #menuStyle {
+            text-decoration: none !important;
+            color: black;
+        }
+/* menustyle */
+* {
+	 box-sizing: border-box;
+}
+ /* html, body {
+	 min-height: 100%;
+	 height: 100%;
+	 background-image: url(http://theartmad.com/wp-content/uploads/Dark-Grey-Texture-Wallpaper-5.jpg);
+	 background-size: cover;
+	 background-position: top center;
+	 font-family: helvetica neue, helvetica, arial, sans-serif;
+	 font-weight: 200;
+} */
+ html.modal-active, body.modal-active {
+	 overflow: hidden;
+}
+ #modal-container {
+	 position: fixed;
+	 display: table;
+	 height: 100%;
+	 width: 100%;
+	 top: 0;
+	 left: 0;
+	 transform: scale(0);
+	 z-index: 1;
+}
+.modal {
+  width: 100vw;
+  height: 100%;
+  background-color: black !important;
+  z-index: 3;
+}
+ #modal-container.three {
+	 z-index: 10;
+	 transform: scale(1);
+}
+ /* #modal-container.three .modal-background {
+	 background: rgba(0, 0, 0, 0.6);
+} */
+ #modal-container.three .modal-background .modal {
+	 animation: moveUp 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+}
+ /* #modal-container.three + .content {
+	 z-index: 1;
+	 animation: slideUpLarge 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+} */
+ #modal-container.three.out .modal-background .modal {
+	 animation: moveDown 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+}
+ #modal-container.three.out + .content {
+	 animation: slideDownLarge 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+}
+ #modal-container .modal-background {
+	 display: table-cell;
+	 background: rgba(0, 0, 0, 0.8);
+	 text-align: center;
+	 vertical-align: middle;
+}
+ #modal-container .modal-background .modal {
+	 background: white;
+	 padding: 50px;
+	 display: inline-block;
+	 border-radius: 3px;
+	 font-weight: 300;
+	 position: relative;
+}
+ #modal-container .modal-background .modal h2 {
+	 font-size: 25px;
+	 line-height: 25px;
+   margin-bottom: 15px;
+   color: white;
+}
+ #modal-container .modal-background .modal p {
+	 font-size: 18px;
+   line-height: 22px;
+   color: white;
+}
+ /* .content {
+	 min-height: 100%;
+	 height: 100%;
+	 background: white;
+	 position: relative;
+	 z-index: 0;
+} */
+ /* .content h1 {
+	 padding: 75px 0 30px 0;
+	 text-align: center;
+	 font-size: 30px;
+	 line-height: 30px;
+} */
+ @keyframes slideUpLarge {
+	 0% {
+		 transform: translateY(0%);
+	}
+	 100% {
+		 transform: translateY(-100%);
+	}
+}
+ @keyframes slideDownLarge {
+	 0% {
+		 transform: translateY(-100%);
+	}
+	 100% {
+		 transform: translateY(0%);
+	}
+}
+ @keyframes moveUp {
+	 0% {
+		 transform: translateY(150px);
+	}
+	 100% {
+		 transform: translateY(0);
+	}
+}
+ @keyframes moveDown {
+	 0% {
+		 transform: translateY(0px);
+	}
+	 100% {
+		 transform: translateY(150px);
+	}
+}
+</style>
+<script src="https://code.jquery.com/jquery-3.5.0.js"></script>    
+<script>
+  var d = new Date();
+  document.getElementById("date").innerHTML = d.toDateString();
+
+  function startTime() {
+    var today = new Date();
+    var hr = today.getHours();
+    var min = today.getMinutes();
+    var sec = today.getSeconds();
+    ap = (hr < 12) ? "<span>AM</span>" : "<span>PM</span>";
+    hr = (hr == 0) ? 12 : hr;
+    hr = (hr > 12) ? hr - 12 : hr;
+    //Add a zero in front of numbers<10
+    hr = checkTime(hr);
+    min = checkTime(min);
+    sec = checkTime(sec);
+    document.getElementById("clock").innerHTML = hr + " : " + min + " " + ap;
+    var time = setTimeout(function(){ startTime() }, 500);
+}
+function checkTime(i) {
+    if (i < 10) {
+        i = "0" + i;
+    }
+    return i;
+}
+$(function() {
+  $('#menuStyle').click(function() {
+    $('#modal-container').show();
+    $('#modal-container').removeAttr('class').addClass('three');
+    $('body').addClass('modal-active');
+  });
+  $('#modal-container').click(function(){
+    $(this).addClass('out');
+    $('body').removeClass('modal-active');
+    $('#modal-container').hide();
+  });
+});
+</script>
+  

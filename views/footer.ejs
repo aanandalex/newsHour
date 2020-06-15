@@ -1,0 +1,50 @@
+<div class="container" id="footer">
+    <h1 style="font-weight: 600;">article,</h1>
+    <h1 style="font-weight: 600;">All Rights Reserved ©2020</h1>
+</div>  
+</body>
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+Chettan+2:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+    #footer {
+        margin-top: 6.66667vw;
+        padding-bottom: 4.44444vw;
+        width: 100%;
+        width: 100vw;
+        display: block;
+        text-align: center;
+        text-transform: capitalize;
+    }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.5.0.js"></script>    
+    <script>
+    function wheel(event) {
+      var delta = 0;
+      if (event.wheelDelta) {(delta = event.wheelDelta / 120);}
+      else if (event.detail) {(delta = -event.detail / 3);}
+
+      handle(delta);
+      if (event.preventDefault) {(event.preventDefault());}
+      event.returnValue = false;
+    }
+
+  function handle(delta) {
+      var time = 1000;
+      var distance = 300;
+
+      $('html, body').stop().animate({
+          scrollTop: $(window).scrollTop() - (distance * delta)
+      }, time );
+    }
+
+  if (window.addEventListener) {window.addEventListener('DOMMouseScroll', wheel, false);}
+    window.onmousewheel = document.onmousewheel = wheel;
+
+    $(function() {
+        
+    });
+    </script>
+</html>

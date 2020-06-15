@@ -6,6 +6,7 @@ const reuter = require('./reuters.js');
 const manorama = require('./manorama.js');
 const opn = require('better-opn');
 const moment = require('moment');
+const reuters = require('./reuters.js');
 const app = express()
 const port = process.env.PORT || 3000;
 
@@ -42,7 +43,6 @@ app.use(function (req, res, next) {
 app.get('/', (resq,res) => {
     manoramaCollection.find({date: moment(new Date()).format("DD/MM/YYYY")}).sort({_id: -1})
     .then((resp) => {
-        console.log('manorama',resp.length);
         res.render('index', {news: resp});
     })
     .catch((error) => {
@@ -93,4 +93,57 @@ app.get('/news/manorama', (req,res) => {
     .catch((error) => {
         res.status(400).send(error);
     });
-})
+});
+
+var articleReuters;
+var articleManorama;
+
+newsCollection.find({date: moment(new Date()).format("DD/MM/YYYY")}).sort({ _id: -1 })
+    .then((resp) => {
+        console.log('reuters article',resp.length);
+        if(resp) {
+            articleReuters = resp;
+        }
+    })
+    .catch((error) => {
+        console.log('error to get the reuters page');
+    });
+
+manoramaCollection.find({date: moment(new Date()).format("DD/MM/YYYY")}).sort({_id: -1})
+    .then((resp) => {
+        console.log('manorama article',resp.length);
+        if(resp) {
+            articleManorama = resp;
+        }
+    })
+    .catch((error) => {
+        console.log('error to get the manorama page');
+    });
+
+app.get('/article', (req,res) => {
+    res.render('articles', {reuter: articleReuters, manorama: articleManorama});
+});
+
+app.get('/article/:collectionId/:articleId', (req,res) => {
+    if (req.params.collectionId == 1) {
+        newsCollection.find({_id: req.params.articleId})
+        .then(resp => {
+            res.render('details', {res: resp});
+        })
+        .catch(error => {
+            res.status(500).json({
+                message: 'Fetching News Failed!'
+            });
+        });
+    } else if (req.params.collectionId == 2) {
+        manoramaCollection.find({_id: req.params.articleId})
+        .then(resp => {
+            res.render('details', {res: resp});
+        })
+        .catch(error => {
+            res.status(500).json({
+                message: 'Fetching News Failed!'
+            });
+        });
+    }
+});

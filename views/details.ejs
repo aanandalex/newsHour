@@ -1,0 +1,54 @@
+<%- include('headerDetail') -%>
+<!-- <div class="container col-md-12" id="imageContainerMain">
+    <img src="<%= res[0].imageUrl[0] %>" alt="" style="width:100%; height: 100%;">
+</div> -->
+<div class="container-fluid" id="imageContainerMain">
+    <div class="row">
+        <div class="col-md-12" id="imageColumnMain">
+            <img src="<%= res[0].imageUrl %>" alt="" style="width:100%; height: 100%;">
+        </div>
+    </div>
+</div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <h1 id="heading"><%= res[0].heading %></h1>
+        </div>
+    </div>
+</div>
+<div class="container-fluid">
+    <div class="row">
+        <% for(var i=0; i < res[0].article.length; i++) { %>
+        <div class="col-md-6">
+            <% if (res[0].imageUrl[i]) { %>
+                <img src="<%= res[0].imageUrl[i] %>" alt="">
+            <% } %>
+        </div>
+        <div class="col-md-6">
+            <h1 id="article"><%= res[0].article[i] %></h1>
+        </div>
+        <% } %>
+    </div>
+</div>
+<%- include('footer') -%>
+<style>
+#imageContainerMain {
+    margin-top: 100px;
+}
+#imageColumnMain {
+    padding: 30px;
+}
+#heading {
+    text-transform: capitalize;
+    font-weight: 600;
+    font-size: 100px;
+    text-align: center;
+    padding-bottom: 100px;
+}
+#article {
+    font-size: 32px;
+    font-weight: 500;
+    text-align: left;
+    padding: 20px;
+}
+</style>
